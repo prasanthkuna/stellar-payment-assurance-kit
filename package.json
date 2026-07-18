@@ -1,0 +1,27 @@
+{
+  "name": "stellar-payment-assurance-kit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Payment reliability and reconciliation infrastructure for Stellar business payouts",
+  "license": "Apache-2.0",
+  "type": "module",
+  "packageManager": "npm@10.9.0",
+  "engines": { "node": ">=20" },
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "test": "vitest run",
+    "test:testnet": "cross-env TESTNET_INTEGRATION=1 vitest run packages/stellar/src/horizon.integration.test.ts",
+    "typecheck": "tsc -p packages/core/tsconfig.json --noEmit && tsc -p packages/stellar/tsconfig.json --noEmit",
+    "testnet-evidence": "npx tsx scripts/testnet-evidence.ts",
+    "testnet-verify": "npx tsx scripts/testnet-evidence.ts verify"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^13.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}
